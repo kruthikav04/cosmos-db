@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Message Board (Cosmos DB)</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+            background: #f5f5f5;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 500px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        button {
+            padding: 10px;
+            background: green;
+            color: white;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .msg {
+            background: #fff;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 5px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>📩 Message Board (Azure Cosmos DB)</h2>
+
+    <!-- Add Message Form -->
+    <div class="box">
+        <form action="/add" method="POST">
+            <input type="text" name="user" placeholder="Enter username" required>
+            <input type="text" name="message" placeholder="Enter message" required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <!-- Display Messages -->
+    <div class="box">
+        <h3>Messages</h3>
+
+        {% for msg in messages %}
+            <div class="msg">
+                <b>{{ msg.user_id }}</b> : {{ msg.message }}
+            </div>
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>
